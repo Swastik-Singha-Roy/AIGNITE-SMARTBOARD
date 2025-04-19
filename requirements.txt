@@ -1,0 +1,6 @@
+streamlit
+speechrecognition
+google-generativeai
+requests
+pillow
+openai
