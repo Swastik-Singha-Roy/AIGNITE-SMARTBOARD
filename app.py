@@ -171,9 +171,10 @@ def generate_quiz(text, num_questions=5):
         return []
     try:
         prompt = (
-            f"Generate {num_questions} multiple-choice questions from this content:\n{text}\n"
-            "Format as a JSON list with keys: 'question', 'options' (4 items, each starting with 'A.', 'B.', etc.), 'answer' (A/B/C/D).\n"
-            "Example: [{'question':'...','options':['A. ...','B. ...','C. ...','D. ...'],'answer':'A'}]"
+        f"Generate {num_questions} multiple-choice questions from this content:\n{text}\n"
+        "Format as a JSON array. Use double quotes (\") for all property names and string values. "
+        "Keys: \"question\", \"options\" (4 items, each starting with \"A.\", \"B.\", etc.), \"answer\" (A/B/C/D). "
+        "Example: [{\"question\": \"...\", \"options\": [\"A. ...\", \"B. ...\", \"C. ...\", \"D. ...\"], \"answer\": \"A\"}]"
         )
         model = genai.GenerativeModel("gemini-1.5-pro")
         response = model.generate_content(prompt)
