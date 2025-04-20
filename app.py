@@ -13,7 +13,7 @@ STABILITY_API_HOST = "https://api.stability.ai/v2beta/stable-image/generate/sd3"
 STABILITY_MODELS = ["sd3", "sd3-turbo"]
 
 st.set_page_config(page_title="AI Smart Board", layout="wide", initial_sidebar_state="expanded")
-genai.configure(api_key=os.getenv("GEMINI_API_KEY") or "AIzaSyAytQyyuzYZEXqTQdWV0BrkaxvGnfsr8Ak")
+genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 def excalidraw_whiteboard():
     return html("""
@@ -187,21 +187,7 @@ def generate_quiz(text, num_questions=5):
         return []
 
 def main():
-    with st.sidebar:
-        st.header("🔧 Tools & Settings")
-        st.markdown("### Available Models")
-        try:
-            genai_models = [m for m in genai.list_models() 
-                          if "generateContent" in getattr(m, "supported_generation_methods", [])]
-            if genai_models:
-                st.write("**Gemini Models:**")
-                for m in genai_models:
-                    st.write(f"- {m.name}")
-            st.write("**Stable Diffusion Models:**")
-            st.write("- SD3\n- SD3 Turbo")
-        except Exception as e:
-            st.write(f"Error listing models: {e}")
-
+   
     col_whiteboard, col_notes = st.columns([2, 1])
 
     with col_whiteboard:
