@@ -12,7 +12,7 @@ from io import BytesIO
 STABILITY_API_HOST = "https://api.stability.ai/v2beta/stable-image/generate/sd3"
 STABILITY_MODELS = ["sd3", "sd3-turbo"]
 
-st.set_page_config(page_title="AI Smart Board", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="AI Smart Board", layout="wide")
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 
 def excalidraw_whiteboard():
